@@ -175,9 +175,10 @@ if ( ! class_exists( 'GoogleStorageAPI' ) ) {
 		 * @param  array  $args   [description]
 		 * @return [type]         [description]
 		 */
-		public function insert_object( string $bucket, $args = array() ) {
+		public function insert_object( string $bucket, string $object, $args = array() ) {
 			$bucket = urlencode( $bucket );
-			return $this->build_request( "b/$bucket/o", array( 'key' => static::$api_token ), 'POST' )->fetch();
+			$object = urlencode( $object );
+			return $this->build_request( "b/$bucket/o$object", array( 'key' => static::$api_token ), 'POST' )->fetch();
 		}
 
 		/**
